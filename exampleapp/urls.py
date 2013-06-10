@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.views.generic import TemplateView
 from .views import CustomInvitationStartView, CustomInvitationCompleteView
 from sky_visitor.urls import TOKEN_REGEX
 
@@ -16,6 +17,9 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
+
+
+    url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
 
 
     # These URLS come before include()-ing the sky_visitor URLs so they override the defaults.
