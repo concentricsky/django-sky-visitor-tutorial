@@ -18,38 +18,70 @@
                 font-family: Verdana;
             }
             .container {
-                width: 600px;
+                width: 800px;
                 margin: 0 auto;
                 padding: 1em;
                 background-color: #fff;
             }
-            .login {
+            .user-tools {
                 float: right;
+                margin: 0;
             }
-            strong.title {
-                padding: 1.2em;
+            .user-tools li {
+                float: left;
+                list-style: none;
+                margin-left: 1em;
+            }
+            div.header {
+                width: 800px;
+                margin: 1em auto;
+            }
+            a.title {
+                padding: 1em;
+                font-weight: bold;
             }
             .content {
                 padding: 1em;
+                clear: both;
+            }
+            .messages {
+                background-color: #fffccf;
+                padding: 1em;
+            }
+            label {
+                font-weight: bold;
             }
 
         </style>
     </head>
     <body>
 
+        <div class="header">
+            <a class="title" href="{% url "home" %}">Sky Visitor Example App</a>
+        </div>
+
         <div class="container">
-            <strong class="title">Sky Visitor Example App</strong>
-            <a class="login" href="{% url "login" %}">Login</a>
+            <ul class="user-tools">
+                {% if user.is_authenticated %}
+                    <li>{{ user.username }}</li>
+                    <li><a href="{% url "change_password" %}">Change Password</a></li>
+                    <li><a href="{% url "logout" %}">Log Out</a></li>
+                {% else %}
+                    <li><a class="login" href="{% url "login" %}">Login</a></li>
+                {% endif %}
+            </ul>
 
             <div class="content">
 
                 {% if messages %}
-                    <strong>Messages:</strong>
-                    <ul>
-                        {% for message in messages %}
-                            <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
+                    <div class="messages">
+                        <strong>Messages:</strong>
+                        <ul>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 {% endif %}
 
                 <h2>{% block title %}{% endblock %}</h2>
