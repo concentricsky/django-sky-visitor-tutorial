@@ -20,11 +20,14 @@
             .container {
                 width: 600px;
                 margin: 0 auto;
+                padding: 1em;
                 background-color: #fff;
             }
-            h1 {
-                text-align: center;
-                padding: 1em;
+            .login {
+                float: right;
+            }
+            strong.title {
+                padding: 1.2em;
             }
             .content {
                 padding: 1em;
@@ -35,9 +38,21 @@
     <body>
 
         <div class="container">
-            <h1>Sky Visitor Example App</h1>
+            <strong class="title">Sky Visitor Example App</strong>
+            <a class="login" href="{% url "login" %}">Login</a>
 
             <div class="content">
+
+                {% if messages %}
+                    <strong>Messages:</strong>
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                <h2>{% block title %}{% endblock %}</h2>
                 {% block content %}
                 {% endblock %}
             </div>

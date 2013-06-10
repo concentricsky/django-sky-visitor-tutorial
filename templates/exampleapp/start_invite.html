@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block title %}Invite a User{% endblock %}
+
+
+{% block content %}
+    <p>Invite your friends to join the community here!</p>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit">
+    </form>
+
+{% endblock %}

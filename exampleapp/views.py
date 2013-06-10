@@ -2,8 +2,8 @@ from sky_visitor.views import InvitationStartView, InvitationCompleteView
 
 
 class CustomInvitationStartView(InvitationStartView):
-    pass
+    template_name = 'exampleapp/start_invite.html'
 
 
 class CustomInvitationCompleteView(InvitationCompleteView):
-    pass
+    template_name = 'exampleapp/complete_invite.html'
