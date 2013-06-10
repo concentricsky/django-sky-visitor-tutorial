@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 
-
 {% block title %}Sky Visitor Home{% endblock %}
-
 
 {% block content %}
     <p>Welcome!</p>
-    <p><a href="{% url "invitation_start" %}">Invite a friend to this site</a></p>
+    <p><a href="{% url "invitation_start" %}">Invite a friend</a> to this community!</p>
+    <p>Visit the <a href="{% url "members_only" %}">members only area</a> of the site.</p>
 {% endblock %}

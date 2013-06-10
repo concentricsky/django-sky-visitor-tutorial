@@ -1,5 +1,6 @@
 from django.core.urlresolvers import reverse
-from sky_visitor.views import InvitationStartView, InvitationCompleteView
+from django.views.generic import TemplateView
+from sky_visitor.views import InvitationStartView, InvitationCompleteView, LoginRequiredMixin
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -20,3 +21,6 @@ class CustomInvitationCompleteView(InvitationCompleteView):
     def get_success_url(self):
         return reverse('home')
 
+
+class MembersOnlyView(LoginRequiredMixin, TemplateView):
+    template_name = 'exampleapp/members_only.html'
